@@ -6,40 +6,56 @@
 
 struct{
     char *nombre;
+    char *apellido;
     int numero;
-} typedef contacto;
+} typedef info;
 
 struct{
-    contacto contacto;
-    NodoAgenda *siguiente;
-} typedef NodoAgenda;
+    info contacto;
+    contacto *siguiente;
+} typedef contacto;
 
-NodoAgenda *nodoVacio();
-NodoAgenda *crearNodo();
+contacto *agendarContacto();
+contacto *borrarContacto();
+contacto *CrearAgenda();
 
 
 int main(){
     srand(time(NULL));
-    NodoAgenda *start = crearNodo;
+    contacto *agenda;
+    agenda = NULL;
+    contacto *papelera;
+    papelera = NULL;
     
 
 
     return 0;
 }
 
-NodoAgenda *crearNodo(){
-    int indice = rand() % 5;
-    char nombres[5][MAX]={"Roman Arancibia","Santiago Ponce","Gonzalo Payrola","Nicolas Jimenez","Aldo Juarez"};
-    NodoAgenda *nuevoContacto = (NodoAgenda*)malloc(sizeof(NodoAgenda));
-    nuevoContacto->contacto.nombre = (char*)strdup(nombres[indice]);
-    nuevoContacto->contacto.numero = 381363500 + rand() % 10;;
-    nuevoContacto->siguiente=NULL;
+contacto *agendarContacto(){
 
-    return nuevoContacto;
 }
 
-NodoAgenda *nodoVacio(){
-    NodoAgenda *nuevo = (NodoAgenda*)malloc(sizeof(NodoAgenda));
+contacto *borrarContacto(){
 
-    return nuevo;
+}
+
+contacto *CrearAgenda(){
+    contacto *agenda = NULL;
+    char nombres[5][MAX] = {"Julia","Paola","Diana","Cesar","Pablo"};
+    char apellidos[5][MAX] = {"Paez","Michelli","Caseres","Orsini","Torres"};
+    short indice1 = rand()%5;
+    short indice2 = rand()%5;
+
+    do{
+        contacto *aux = agenda->siguiente;
+        agenda->contacto.nombre = (char*)strdup(nombres[indice1]);
+        agenda->contacto.apellido = (char*)strdup(nombres[indice1]);
+        agenda->siguiente = NULL;    
+    } while (aux != NULL);
+    
+    
+
+
+    return agenda;
 }
